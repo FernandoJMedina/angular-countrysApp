@@ -16,7 +16,18 @@ export class CountryService {
     return this._http.get<Country[]>(url);
   }
 
-  searchByRegion() {}
+  searchByCapital(searchTerm: string): Observable<Country[]> {
+    const url = `${this._baseUrl}/capital/${searchTerm}`;
+    return this._http.get<Country[]>(url);
+  }
 
-  searchByCapital() {}
+  searchByRegion(searchTerm: string) {
+    const url = `${this._baseUrl}/region/${searchTerm}`;
+    return this._http.get<Country[]>(url);
+  }
+
+  searchById(id: string): Observable<Country> {
+    const url = `${this._baseUrl}/alpha/${id}`;
+    return this._http.get<Country>(url);
+  }
 }
